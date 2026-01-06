@@ -5,7 +5,7 @@ import projectVilla from "@/assets/project-villa.jpg";
 import projectResidential from "@/assets/project-residential.jpg";
 
 export interface Project {
-  id: string;
+  slug: string;
   title: string;
   category: "Residential" | "Commercial" | "Mixed Use";
   location: string;
@@ -24,7 +24,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "the-horizon-house",
+    slug: "the-horizon-house",
     title: "The Horizon House",
     category: "Residential",
     location: "Surrey, UK",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "apex-tower",
+    slug: "apex-tower",
     title: "Apex Tower",
     category: "Commercial",
     location: "Lagos, Nigeria",
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "villa-serene",
+    slug: "villa-serene",
     title: "Villa Serene",
     category: "Residential",
     location: "Ikoyi, Lagos",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "the-quartyard",
+    slug: "the-quartyard",
     title: "The Quartyard",
     category: "Residential",
     location: "London, UK",
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "meadow-view-estate",
+    slug: "meadow-view-estate",
     title: "Meadow View Estate",
     category: "Residential",
     location: "Oxfordshire, UK",
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "innovation-hub",
+    slug: "innovation-hub",
     title: "Innovation Hub",
     category: "Commercial",
     location: "Victoria Island, Lagos",

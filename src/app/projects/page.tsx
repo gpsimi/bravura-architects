@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { projects } from "@/constants/projects";
 
 const categories = ["All", "Residential", "Commercial"];
 
@@ -61,8 +61,8 @@ export default function Projects() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
               <Link
-                key={project.id}
-                href={`/projects/${project.id}`}
+                key={project.slug}
+                href={`/projects/${project.slug}`}
                 className="group project-card aspect-[4/5] rounded-lg overflow-hidden block relative"
               >
                 <Image

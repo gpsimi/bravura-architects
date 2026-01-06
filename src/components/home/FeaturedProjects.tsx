@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { projects } from "@/lib/projects";
+import { projects } from "@/constants/projects";
 
 export function FeaturedProjects() {
   const featuredProjects = projects.slice(0, 4);
+  console.log("FeaturedProjects slugs:", featuredProjects.map(p => p.slug));
 
   return (
     <section className="section-padding bg-secondary">
@@ -32,7 +33,7 @@ export function FeaturedProjects() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Featured Large Project */}
           <Link
-            href={`/projects/${featuredProjects[0].id}`}
+            href={`/projects/${featuredProjects[0].slug}`}
             className="group project-card aspect-[4/5] md:aspect-auto md:row-span-2 rounded-lg overflow-hidden block relative"
           >
             <Image
@@ -66,8 +67,8 @@ export function FeaturedProjects() {
           {/* Other Projects */}
           {featuredProjects.slice(1).map((project) => (
             <Link
-              key={project.id}
-              href={`/projects/${project.id}`}
+              key={project.slug}
+              href={`/projects/${project.slug}`}
               className="group project-card aspect-[4/3] rounded-lg overflow-hidden block relative"
             >
               <Image

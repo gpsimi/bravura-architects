@@ -2,12 +2,12 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { projects } from "@/constants/projects";
 import { Button } from "@/components/ui/button";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
-    slug: project.id,
+    slug: project.slug,
   }));
 }
 
@@ -17,14 +17,14 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.id === slug);
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
   }
 
   // Find next and previous projects for navigation
-  const currentIndex = projects.findIndex((p) => p.id === slug);
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const prevProject =
     projects[(currentIndex - 1 + projects.length) % projects.length];
@@ -167,7 +167,7 @@ export default async function ProjectPage({
       <section className="border-t border-border">
         <div className="grid grid-cols-2">
           <Link
-            href={`/projects/${prevProject.id}`}
+            href={`/projects/${prevProject.slug}`}
             className="group block p-12 border-r border-border hover:bg-secondary transition-colors text-left"
           >
             <div className="flex items-center gap-2 mb-2 text-muted-foreground group-hover:text-primary transition-colors">
@@ -181,7 +181,7 @@ export default async function ProjectPage({
             </h3>
           </Link>
           <Link
-            href={`/projects/${nextProject.id}`}
+            href={`/projects/${nextProject.slug}`}
             className="group block p-12 hover:bg-secondary transition-colors text-right"
           >
             <div className="flex items-center justify-end gap-2 mb-2 text-muted-foreground group-hover:text-primary transition-colors">
