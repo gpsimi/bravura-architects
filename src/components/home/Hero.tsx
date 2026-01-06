@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-architecture.jpg";
 
@@ -13,8 +14,13 @@ export function Hero() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+      {/* Background Image Parallax Effect */}
+      <motion.div 
+        className="absolute inset-0"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      >
         <Image
           src={heroImage}
           alt="Modern architectural design by Bravura Architects"
@@ -24,23 +30,47 @@ export function Hero() {
           placeholder="blur"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 container-wide text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="font-body text-primary-foreground/70 tracking-[0.3em] uppercase text-sm mb-6 animate-fade-up opacity-0" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
-            Award-Winning Architecture
-          </p>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight mb-8 animate-fade-up opacity-0" style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="font-body text-primary-foreground/70 tracking-[0.3em] uppercase text-sm mb-6">
+              Award-Winning Architecture
+            </p>
+          </motion.div>
+          
+          <motion.h1 
+            className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Designing Spaces That
             <br />
             <span className="italic">Inspire & Endure</span>
-          </h1>
-          <p className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 animate-fade-up opacity-0" style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}>
+          </motion.h1>
+
+          <motion.p 
+            className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             Creating exceptional residential and commercial architecture across the United Kingdom and Nigeria since 2005.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up opacity-0" style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}>
+          </motion.p>
+
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
             <Button variant="hero" size="xl" asChild>
               <Link href="/projects">
                 View Projects
@@ -50,18 +80,24 @@ export function Hero() {
             <Button variant="heroOutline" size="xl" asChild>
               <Link href="/contact">Schedule Consultation</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <button
+      <motion.button
         onClick={scrollToContent}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/60 hover:text-primary-foreground transition-colors animate-float"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/60 hover:text-primary-foreground transition-colors"
         aria-label="Scroll to content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ 
+          opacity: { delay: 1.2, duration: 1 },
+          y: { repeat: Infinity, duration: 2, ease: "easeInOut" }
+        }}
       >
         <ChevronDown size={32} />
-      </button>
+      </motion.button>
     </section>
   );
 }
