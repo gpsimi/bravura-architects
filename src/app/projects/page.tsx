@@ -59,9 +59,9 @@ export default function Projects() {
       <section className="section-padding">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <Link
-                key={project.slug}
+                key={project.slug || index}
                 href={`/projects/${project.slug}`}
                 className="group project-card aspect-[4/5] rounded-lg overflow-hidden block relative"
               >

@@ -200,7 +200,7 @@ export default async function ProjectPage({
       {/* Call to Action */}
       <section className="py-24 bg-primary text-primary-foreground text-center">
         <div className="container-wide">
-          <h2 className="font-heading text-3xl md:text-4xl mb-6">
+          <h2 className="font-heading text-3xl md:text-4xl text-heading leading-tight mb-6">
             Ready to start your project?
           </h2>
           <p className="font-body text-primary-foreground/80 max-w-2xl mx-auto mb-8 text-lg">

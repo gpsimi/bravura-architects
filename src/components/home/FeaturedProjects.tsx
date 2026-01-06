@@ -6,7 +6,6 @@ import { projects } from "@/constants/projects";
 
 export function FeaturedProjects() {
   const featuredProjects = projects.slice(0, 4);
-  console.log("FeaturedProjects slugs:", featuredProjects.map(p => p.slug));
 
   return (
     <section className="section-padding bg-secondary">
@@ -65,9 +64,9 @@ export function FeaturedProjects() {
           </Link>
 
           {/* Other Projects */}
-          {featuredProjects.slice(1).map((project) => (
+          {featuredProjects.slice(1).map((project, index) => (
             <Link
-              key={project.slug}
+              key={project.slug || index}
               href={`/projects/${project.slug}`}
               className="group project-card aspect-[4/3] rounded-lg overflow-hidden block relative"
             >
