@@ -32,17 +32,32 @@ export default async function ProjectPage({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          priority
-          className="object-cover"
-          placeholder="blur"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-end pb-20">
+      <section className="relative h-[80vh] w-full overflow-hidden">
+        <div className="absolute inset-0 flex w-[200%] animate-marquee">
+          <div className="relative h-full w-1/2">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              priority
+              className="object-cover"
+              placeholder="blur"
+            />
+          </div>
+          <div className="relative h-full w-1/2">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              priority
+              className="object-cover"
+              placeholder="blur"
+            />
+          </div>
+        </div>
+        
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 flex items-end pb-20 z-20">
           <div className="container-wide">
             <div className="max-w-4xl animate-fade-up">
               <p className="text-primary-foreground/80 font-body tracking-[0.2em] uppercase text-sm mb-4">

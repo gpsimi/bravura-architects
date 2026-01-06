@@ -93,6 +93,10 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +107,7 @@ export default {
         "scale-in": "scale-in 0.4s ease-out forwards",
         "slide-in-right": "slide-in-right 0.4s ease-out",
         "float": "float 6s ease-in-out infinite",
+        marquee: "marquee 60s linear infinite",
       },
       boxShadow: {
         'soft': '0 2px 8px hsl(0 0% 0% / 0.04)',
