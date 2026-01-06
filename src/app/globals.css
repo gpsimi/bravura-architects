@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 45%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 45%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 45%;
+
+    --primary: 237 45% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 25%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 237 45% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 237 45% 59%;
+
+    --radius: 0.25rem;
+
+    /* Custom Brand Tokens */
+    --heading: 0 0% 20%;
+    --text-light: 0 0% 60%;
+    --surface-warm: 30 20% 98%;
+    --divider: 0 0% 92%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(237 45% 59% / 0.9) 0%, hsl(237 45% 45% / 0.95) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.04);
+    --shadow-md: 0 4px 20px hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 8px 40px hsl(0 0% 0% / 0.12);
+    --shadow-accent: 0 8px 30px hsl(237 45% 59% / 0.25);
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 90%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 237 45% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 237 45% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 237 45% 65%;
+    
+    --heading: 0 0% 95%;
+    --text-light: 0 0% 50%;
+    --surface-warm: 0 0% 10%;
+    --divider: 0 0% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-heading font-normal tracking-tight;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply w-full max-w-[1400px] mx-auto px-6 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hover effect for project cards */
+  .project-card {
+    @apply relative overflow-hidden cursor-pointer;
+  }
+
+  .project-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-500;
+  }
+
+  .project-card:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Underline animation for links */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-current scale-x-0 origin-right transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    @apply opacity-0 translate-y-8;
+    animation: reveal 0.8s ease-out forwards;
+  }
+
+  .reveal-delay-1 { animation-delay: 0.1s; }
+  .reveal-delay-2 { animation-delay: 0.2s; }
+  .reveal-delay-3 { animation-delay: 0.3s; }
+  .reveal-delay-4 { animation-delay: 0.4s; }
+}
+
+@layer utilities {
+  .text-heading {
+    color: hsl(var(--heading));
+  }
+
+  .text-body {
+    color: hsl(var(--foreground));
+  }
+
+  .text-light {
+    color: hsl(var(--text-light));
+  }
+
+  .bg-surface-warm {
+    background-color: hsl(var(--surface-warm));
+  }
+
+  .border-divider {
+    border-color: hsl(var(--divider));
+  }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0); /* Fixed from original which didn't transform */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Note: keeping original keyframes mostly intact */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
