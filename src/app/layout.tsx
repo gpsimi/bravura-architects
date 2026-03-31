@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bravura Horizon",
+  title: "Bravura Architects",
   description: "Architectural Excellence",
 };
 
